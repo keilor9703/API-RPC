@@ -228,6 +228,9 @@ namespace Replic.Controllers
                         cmd.Parameters.Add("P_TotalCanales", OracleDbType.Varchar2).Value = pedido.P_TotalCanales;
                         cmd.Parameters.Add("P_TipoGenero", OracleDbType.Varchar2).Value = pedido.P_TipoGenero ?? (object)DBNull.Value;
 
+                        //cmd.Parameters.Add("P_TipoGenero", OracleDbType.Varchar2).Value = pedido.P_TipoGenero ?? (object)DBNull.Value;
+
+
                         // Parámetros de salida
                         cmd.Parameters.Add("SRV_Message", OracleDbType.Clob).Direction = ParameterDirection.Output;
                         cmd.Parameters.Add("P_Resultado", OracleDbType.Int32).Direction = ParameterDirection.Output;

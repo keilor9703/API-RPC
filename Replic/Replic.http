@@ -1,0 +1,24 @@
+﻿@Replic_HostAddress = https://localhost:44334
+
+
+
+
+
+
+POST {{Replic_HostAddress}}/api/pedidos
+Content-Type: application/json
+
+{
+  //Pedido
+}
+
+###
+
+POST {{Replic_HostAddress}}/api/eventos
+Content-Type: application/json
+
+{
+  //Evento
+}
+
+###

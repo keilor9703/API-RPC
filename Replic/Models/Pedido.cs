@@ -42,7 +42,8 @@ namespace Replic.Models
         public string P_CadusuaUsuario { get; set; }
         public string P_CadpoliCeduEmpleado { get; set; }
         public int? P_CadPediSitioGraba { get; set; }
-        public int? P_CAdPediNumeLlamada { get; set; }
+        public long? P_CAdPediNumeLlamada { get; set; }
+
         public string P_FechaGrabacion { get; set; }
         public string P_FechCaso { get; set; }
         public string P_TotalCanales { get; set; }

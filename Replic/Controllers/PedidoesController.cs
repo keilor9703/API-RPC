@@ -78,7 +78,7 @@ namespace Replic.Controllers
                         cmd.Parameters.Add("P_CadusuaUsuario", OracleDbType.Varchar2).Value = pedido.P_CadusuaUsuario;
                         cmd.Parameters.Add("P_CadpoliCeduEmpleado", OracleDbType.Varchar2).Value = pedido.P_CadpoliCeduEmpleado;
                         cmd.Parameters.Add("P_CadPediSitioGraba", OracleDbType.Int32).Value = pedido.P_CadPediSitioGraba ?? (object)DBNull.Value;
-                        cmd.Parameters.Add("P_CAdPediNumeLlamada", OracleDbType.Int32).Value = pedido.P_CAdPediNumeLlamada ?? (object)DBNull.Value;
+                        cmd.Parameters.Add("P_CAdPediNumeLlamada", OracleDbType.Int64).Value = pedido.P_CAdPediNumeLlamada ?? (object)DBNull.Value;
 
                         string fechaGrabacionCadena = pedido.P_FechaGrabacion.Replace(" a. m.", " AM").Replace(" p. m.", " PM").Replace(".", "").Trim();
                         DateTime fechaCreacion = DateTime.ParseExact(fechaGrabacionCadena, "dd/MM/yyyy h:mm:ss tt", CultureInfo.InvariantCulture);
@@ -220,7 +220,8 @@ namespace Replic.Controllers
                         cmd.Parameters.Add("P_CadusuaUsuario", OracleDbType.Varchar2).Value = pedido.P_CadusuaUsuario;
                         cmd.Parameters.Add("P_CadpoliCeduEmpleado", OracleDbType.Varchar2).Value = pedido.P_CadpoliCeduEmpleado;
                         cmd.Parameters.Add("P_CadPediSitioGraba", OracleDbType.Int32).Value = pedido.P_CadPediSitioGraba ?? (object)DBNull.Value;
-                        cmd.Parameters.Add("P_CAdPediNumeLlamada", OracleDbType.Int32).Value = pedido.P_CAdPediNumeLlamada ?? (object)DBNull.Value;
+                        cmd.Parameters.Add("P_CAdPediNumeLlamada", OracleDbType.Int64).Value = pedido.P_CAdPediNumeLlamada ?? (object)DBNull.Value;
+
 
                         cmd.Parameters.Add("P_FechaGrabacion", OracleDbType.Date).Value = DateTime.ParseExact(pedido.P_FechaGrabacion, "dd/MM/yyyy h:mm:ss tt", CultureInfo.InvariantCulture);
                         cmd.Parameters.Add("P_FechCaso", OracleDbType.Date).Value = DateTime.ParseExact(pedido.P_FechCaso, "dd/MM/yyyy h:mm:ss", CultureInfo.InvariantCulture);

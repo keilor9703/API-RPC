@@ -40,6 +40,30 @@ namespace Replic.Controllers
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
+
+                        pedido.P_DispTelefonico = Utils.CleanStringForWindows1252(pedido.P_DispTelefonico);
+                        pedido.P_CeldaMarcacion = pedido.P_CeldaMarcacion != null ? Utils.CleanStringForWindows1252(pedido.P_CeldaMarcacion) : null;
+                        pedido.P_PropTelefono = Utils.CleanStringForWindows1252(pedido.P_PropTelefono);
+                        pedido.P_DireTelefono = Utils.CleanStringForWindows1252(pedido.P_DireTelefono);
+                        pedido.P_BarrTelefono = Utils.CleanStringForWindows1252(pedido.P_BarrTelefono);
+                        pedido.P_TipoPedido = Utils.CleanStringForWindows1252(pedido.P_TipoPedido);
+                        pedido.P_CaliPedido = Utils.CleanStringForWindows1252(pedido.P_CaliPedido);
+                        pedido.P_TipoInformacion = Utils.CleanStringForWindows1252(pedido.P_TipoInformacion);
+                        pedido.P_NombLlamante = pedido.P_NombLlamante != null ? Utils.CleanStringForWindows1252(pedido.P_NombLlamante) : null;
+                        pedido.P_DireLlamante = pedido.P_DireLlamante != null ? Utils.CleanStringForWindows1252(pedido.P_DireLlamante) : null;
+                        pedido.P_DireCaso = Utils.CleanStringForWindows1252(pedido.P_DireCaso);
+                        pedido.P_Comentario = Utils.CleanStringForWindows1252(pedido.P_Comentario);
+                        pedido.P_CodiPedido = Utils.CleanStringForWindows1252(pedido.P_CodiPedido);
+                        pedido.P_CodiPedido2 = pedido.P_CodiPedido2 != null ? Utils.CleanStringForWindows1252(pedido.P_CodiPedido2) : null;
+                        pedido.P_CodiPedidoReal = pedido.P_CodiPedidoReal != null ? Utils.CleanStringForWindows1252(pedido.P_CodiPedidoReal) : null;
+                        pedido.P_Importancia = Utils.CleanStringForWindows1252(pedido.P_Importancia);
+                        pedido.P_Prioridad = Utils.CleanStringForWindows1252(pedido.P_Prioridad);
+                        pedido.P_Estado = Utils.CleanStringForWindows1252(pedido.P_Estado);
+                        pedido.P_Enviar = Utils.CleanStringForWindows1252(pedido.P_Enviar);
+                        pedido.P_CadusuaUsuario = Utils.CleanStringForWindows1252(pedido.P_CadusuaUsuario);
+                        pedido.P_CadpoliCeduEmpleado = Utils.CleanStringForWindows1252(pedido.P_CadpoliCeduEmpleado);
+
+
                         cmd.Parameters.Add("P_SitioGraba", OracleDbType.Int32).Value = pedido.P_SitioGraba;
                         cmd.Parameters.Add("P_NumeLlamada", OracleDbType.Int32).Value = pedido.P_NumeLlamada;
 
@@ -79,6 +103,7 @@ namespace Replic.Controllers
                         cmd.Parameters.Add("P_CadpoliCeduEmpleado", OracleDbType.Varchar2).Value = pedido.P_CadpoliCeduEmpleado;
                         cmd.Parameters.Add("P_CadPediSitioGraba", OracleDbType.Int32).Value = pedido.P_CadPediSitioGraba ?? (object)DBNull.Value;
                         cmd.Parameters.Add("P_CAdPediNumeLlamada", OracleDbType.Int64).Value = pedido.P_CAdPediNumeLlamada ?? (object)DBNull.Value;
+
 
                         string fechaGrabacionCadena = pedido.P_FechaGrabacion.Replace(" a. m.", " AM").Replace(" p. m.", " PM").Replace(".", "").Trim();
                         DateTime fechaCreacion = DateTime.ParseExact(fechaGrabacionCadena, "dd/MM/yyyy h:mm:ss tt", CultureInfo.InvariantCulture);
@@ -184,6 +209,31 @@ namespace Replic.Controllers
                     using (var cmd = new OracleCommand("PK_REPLICA_DBOPER1.Actualizar_CadPedido", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
+
+                        pedido.P_DispTelefonico = Utils.CleanStringForWindows1252(pedido.P_DispTelefonico);
+                        pedido.P_CeldaMarcacion = pedido.P_CeldaMarcacion != null ? Utils.CleanStringForWindows1252(pedido.P_CeldaMarcacion) : null;
+                        pedido.P_PropTelefono = Utils.CleanStringForWindows1252(pedido.P_PropTelefono);
+                        pedido.P_DireTelefono = Utils.CleanStringForWindows1252(pedido.P_DireTelefono);
+                        pedido.P_BarrTelefono = Utils.CleanStringForWindows1252(pedido.P_BarrTelefono);
+                        pedido.P_TipoPedido = Utils.CleanStringForWindows1252(pedido.P_TipoPedido);
+                        pedido.P_CaliPedido = Utils.CleanStringForWindows1252(pedido.P_CaliPedido);
+                        pedido.P_TipoInformacion = Utils.CleanStringForWindows1252(pedido.P_TipoInformacion);
+                        pedido.P_NombLlamante = pedido.P_NombLlamante != null ? Utils.CleanStringForWindows1252(pedido.P_NombLlamante) : null;
+                        pedido.P_DireLlamante = pedido.P_DireLlamante != null ? Utils.CleanStringForWindows1252(pedido.P_DireLlamante) : null;
+                        pedido.P_DireCaso = Utils.CleanStringForWindows1252(pedido.P_DireCaso);
+                        pedido.P_Comentario = Utils.CleanStringForWindows1252(pedido.P_Comentario);
+                        pedido.P_CodiPedido = Utils.CleanStringForWindows1252(pedido.P_CodiPedido);
+                        pedido.P_CodiPedido2 = pedido.P_CodiPedido2 != null ? Utils.CleanStringForWindows1252(pedido.P_CodiPedido2) : null;
+                        pedido.P_CodiPedidoReal = pedido.P_CodiPedidoReal != null ? Utils.CleanStringForWindows1252(pedido.P_CodiPedidoReal) : null;
+                        pedido.P_Importancia = Utils.CleanStringForWindows1252(pedido.P_Importancia);
+                        pedido.P_Prioridad = Utils.CleanStringForWindows1252(pedido.P_Prioridad);
+                        pedido.P_Estado = Utils.CleanStringForWindows1252(pedido.P_Estado);
+                        pedido.P_Enviar = Utils.CleanStringForWindows1252(pedido.P_Enviar);
+                        pedido.P_CadusuaUsuario = Utils.CleanStringForWindows1252(pedido.P_CadusuaUsuario);
+                        pedido.P_CadpoliCeduEmpleado = Utils.CleanStringForWindows1252(pedido.P_CadpoliCeduEmpleado);
+
+
+
 
                         // Configuración de los parámetros del procedimiento almacenado
                         cmd.Parameters.Add("P_SitioGraba", OracleDbType.Int32).Value = pedido.P_SitioGraba;

@@ -13,6 +13,10 @@ namespace Replic
     {
         public static void Main(string[] args)
         {
+            // Algunas bases remotas (11g/12.1) no ofrecen el verificador 12C que el driver exige por defecto (ORA-28040).
+            Oracle.ManagedDataAccess.Client.OracleConfiguration.SqlNetAllowedLogonVersionClient =
+                Oracle.ManagedDataAccess.Client.OracleAllowedLogonVersionClient.Version11;
+
             CreateHostBuilder(args).Build().Run();
         }
 

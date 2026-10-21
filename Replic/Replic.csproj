@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="sqlnet.ora"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="obj\**" />
     <Content Remove="obj\**" />
     <EmbeddedResource Remove="obj\**" />

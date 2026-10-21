@@ -30,7 +30,7 @@ namespace Replic.Services
                                 ILogger<PedidoRpcService> logger)
         {
             _centralConnection = config.GetConnectionString("ConnectionDBoper");
-            _paquete = config["CentralPackage"] ?? "PK_REPLICACION_DBOPER";
+            _paquete = config["CentralPackage"] ?? "PK_SECADRPCP";
             _resolver = resolver;
             _logger = logger;
         }
@@ -46,7 +46,7 @@ namespace Replic.Services
             try
             {
                 using var conn = new OracleConnection(_centralConnection);
-                using var cmd = new OracleCommand($"{_paquete}.P_INS_RPC_VINCULANTE2", conn)
+                using var cmd = new OracleCommand($"{_paquete}.P_INS_RPC_VINCULANTE3", conn)
                 {
                     CommandType = CommandType.StoredProcedure,
                     BindByName = true
@@ -137,7 +137,7 @@ namespace Replic.Services
                 try
                 {
                     using var conn = new OracleConnection(remoteConn);
-                    using var cmd = new OracleCommand("USR_CAD.P_INS_PEDIDO_RPC_REMOTO", conn)
+                    using var cmd = new OracleCommand("PK_SECADRPCP.P_INS_PEDIDO_RPC_REMOTO2", conn)
                     {
                         CommandType = CommandType.StoredProcedure,
                         BindByName = true

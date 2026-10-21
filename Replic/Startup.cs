@@ -36,6 +36,9 @@ namespace Replic
                        .EnableSensitiveDataLogging() // Habilitar el registro de datos sensibles
             );
 
+            services.AddSingleton<Replic.Services.IRemoteDatabaseResolver, Replic.Services.RemoteDatabaseResolver>();
+            services.AddScoped<Replic.Services.IPedidoRpcService, Replic.Services.PedidoRpcService>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

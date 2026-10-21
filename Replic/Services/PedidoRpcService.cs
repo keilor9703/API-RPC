@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
@@ -220,18 +220,23 @@ namespace Replic.Services
                 await conn.OpenAsync();
                 await cmd.ExecuteNonQueryAsync();
                 var cod = Str(cmd.Parameters["p_cod_salida"].Value);
-                if (cod != "000")
-                    _logger.LogWarning("No se pudo actualizar la central: {Cod} {Msg}", cod,
-                        Str(cmd.Parameters["p_desc_salida"].Value));
+                var msgAct = Str(cmd.Parameters["p_desc_salida"].Value);
+                res.CentralActualizada = cod == "000";
+                res.MensajeActualizacionCentral = cod + " " + msgAct;
+                if (!res.CentralActualizada)
+                    _logger.LogWarning("No se pudo actualizar la central: {Cod} {Msg}", cod, msgAct);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error actualizando el resultado remoto en la central");
+                res.MensajeActualizacionCentral = ex.Message;
             }
 
-            res.Exito = res.InsertadoCentral && res.InsertadoRemoto;
+            res.Exito = res.InsertadoCentral && res.InsertadoRemoto && res.CentralActualizada;
             res.Mensaje = res.Exito
                 ? "Pedido insertado en la base central y en la base remota " + dblink + "."
+                : res.InsertadoRemoto
+                ? "Insertado en remota " + dblink + " (llamada " + res.NumeLlamada + ") pero NO se pudo actualizar el numero en la central: " + res.MensajeActualizacionCentral
                 : "Insertado en central, pero fallo la base remota " + dblink + ": " + res.MensajeRemoto;
             return res;
         }

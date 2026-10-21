@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Replic.Models
@@ -55,6 +55,9 @@ namespace Replic.Models
         public string MensajeCentral { get; set; }
         public string CodigoRemoto { get; set; }
         public string MensajeRemoto { get; set; }
+        /// <summary>true si el numero de llamada definitivo quedo grabado en la central.</summary>
+        public bool CentralActualizada { get; set; }
+        public string MensajeActualizacionCentral { get; set; }
         public string Mensaje { get; set; }
     }
 }

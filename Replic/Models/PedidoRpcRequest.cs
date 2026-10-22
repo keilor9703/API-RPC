@@ -1,11 +1,22 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Replic.Models
 {
-    /// <summary>Parametros de entrada de P_INS_RPC_VINCULANTE2 (base central).</summary>
+    /// <summary>
+    /// Lo que envia el trigger de la base central (TRG_CADPEDIDOS_API) cuando otra API inserta en CADPEDIDOS.
+    /// Los numericos pueden llegar como numero o como texto.
+    /// </summary>
     public class PedidoRpcRequest
     {
+        // Resueltos por la central (snpalarmaslugares)
+        [Required] public string Dblink { get; set; }
+        public long? Fuerza { get; set; }
+        public long? Canal { get; set; }
+        [Required] public long? SitioGraba { get; set; }
+        [Required] public long? NumeLlamada { get; set; }
+
+        // Columnas de CADPEDIDOS
         [Required] public DateTime? HoraCaso { get; set; }
         public string DispTelefonico { get; set; }
         public string CeldaMarcacion { get; set; }
@@ -35,29 +46,21 @@ namespace Replic.Models
         public string Enviar { get; set; }
         public string CadusuaUsuario { get; set; }
         public string CadpoliCeduEmpleado { get; set; }
-        public long? CadpediSitioGraba { get; set; }
-        public long? CadpediNumeLlamada { get; set; }
         public string TotalCanales { get; set; }
         public string TipoGenero { get; set; }
-        public long Bandera { get; set; }
     }
 
     public class PedidoRpcResponse
     {
-        /// <summary>true solo si se inserto en la central Y en la remota.</summary>
+        /// <summary>1 si quedo insertado en la remota (la central busca "result":1 en la respuesta).</summary>
+        public int Result { get; set; }
         public bool Exito { get; set; }
-        public bool InsertadoCentral { get; set; }
         public bool InsertadoRemoto { get; set; }
         public string Dblink { get; set; }
         public long SitioGraba { get; set; }
         public long NumeLlamada { get; set; }
-        public string CodigoCentral { get; set; }
-        public string MensajeCentral { get; set; }
         public string CodigoRemoto { get; set; }
         public string MensajeRemoto { get; set; }
-        /// <summary>true si el numero de llamada definitivo quedo grabado en la central.</summary>
-        public bool CentralActualizada { get; set; }
-        public string MensajeActualizacionCentral { get; set; }
         public string Mensaje { get; set; }
     }
 }

@@ -39,7 +39,8 @@ namespace Replic
             services.AddSingleton<Replic.Services.IRemoteDatabaseResolver, Replic.Services.RemoteDatabaseResolver>();
             services.AddScoped<Replic.Services.IPedidoRpcService, Replic.Services.PedidoRpcService>();
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(o =>
+                o.JsonSerializerOptions.NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Replic", Version = "v1" });

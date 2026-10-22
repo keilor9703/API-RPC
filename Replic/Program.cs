@@ -25,7 +25,9 @@ namespace Replic
         .ConfigureWebHostDefaults(webBuilder =>
         {
             webBuilder.UseStartup<Startup>();
-            webBuilder.UseUrls("http://localhost:44334", "https://localhost:443"); // Especificar las URLs base de la aplicación
+            // En el servidor (docker) definir ASPNETCORE_URLS, p. ej. http://+:80, para que la central pueda alcanzar la API.
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_URLS")))
+                webBuilder.UseUrls("http://localhost:44334", "https://localhost:443");
         });
 
     }
